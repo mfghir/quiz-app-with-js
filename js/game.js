@@ -36,9 +36,17 @@ const showQuestion = () => {
   });
 };
 
-const checkAnswer = () => {};
+const checkAnswer = (e, index) => {
+  const isCorrect = index === correctAnswer ? true : false;
+  if (isCorrect) {
+    e.target.classList.add("correct")
+  }else{
+    e.target.classList.add("incorrect")
+    answerList[correctAnswer].classList.add("correct")
+  }
+};
 
 window.addEventListener("load", fetchData);
 answerList.forEach((button, index) => {
-  button.addEventListener("click", checkAnswer);
+  button.addEventListener("click", (e) => checkAnswer(e, index));
 });
