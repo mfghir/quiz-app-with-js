@@ -1,4 +1,4 @@
-import formatData from "./helper";
+import formatData from "./helper.js";
 
 const URL =
   "https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple";
