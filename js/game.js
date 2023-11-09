@@ -13,6 +13,7 @@ const nextButton = document.getElementById("next-button");
 
 const finishButton = document.getElementById("finish-button");
 const questionNumber = document.getElementById("question-number");
+const error = document.getElementById("error");
 
 const CORRECT_BONUS = 10;
 
@@ -24,10 +25,15 @@ let score = 0;
 let isAccepted = true;
 
 const fetchData = async () => {
-  const response = await fetch(URL);
-  const json = await response.json();
-  formattedData = formatData(json.results);
-  start();
+  try {
+    const response = await fetch(URL);
+    const json = await response.json();
+    formattedData = formatData(json.results);
+    start();
+  } catch {
+    loader.style.display = "none";
+    error.style.display = "block";
+  }
 };
 
 const start = () => {
